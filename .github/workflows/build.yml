@@ -1,0 +1,24 @@
+name: Build LaTeX CV
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex  # change this to your .tex filename
+
+      - name: Commit PDF
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add cv.pdf  # change to match your output filename
+          git commit -m "Update CV PDF" || echo "No changes"
+          git push
