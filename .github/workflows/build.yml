@@ -19,6 +19,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add cv.pdf  # change to match your output filename
+          git add main.pdf  # change to match your output filename
           git commit -m "Update CV PDF" || echo "No changes"
           git push
